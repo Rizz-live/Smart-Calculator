@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Calculator - Amount + Percentage</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(100, 200, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 100, 200, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+            animation: gradientShift 8s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, 30px); }
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background: rgba(20, 20, 40, 0.95);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(100, 200, 255, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 
+                0 0 30px rgba(100, 200, 255, 0.2),
+                0 0 60px rgba(255, 100, 200, 0.1),
+                inset 0 0 30px rgba(100, 200, 255, 0.05);
+            animation: slideIn 0.6s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .title {
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #00d4ff, #ff006e, #00d4ff);
+            background-size: 300% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            animation: shine 3s linear infinite;
+        }
+
+        @keyframes shine {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+
+        .subtitle {
+            font-size: 13px;
+            color: rgba(150, 200, 255, 0.7);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .input-group {
+            margin-bottom: 25px;
+            animation: fadeInUp 0.6s ease-out backwards;
+        }
+
+        .input-group:nth-child(1) { animation-delay: 0.1s; }
+        .input-group:nth-child(2) { animation-delay: 0.2s; }
+        .input-group:nth-child(3) { animation-delay: 0.3s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        label {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+            color: #00d4ff;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px 15px;
+            background: rgba(100, 200, 255, 0.05);
+            border: 2px solid rgba(100, 200, 255, 0.2);
+            border-radius: 12px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        input::placeholder {
+            color: rgba(150, 200, 255, 0.4);
+        }
+
+        input:focus {
+            background: rgba(100, 200, 255, 0.1);
+            border-color: #00d4ff;
+            box-shadow: 
+                0 0 15px rgba(0, 212, 255, 0.3),
+                inset 0 0 10px rgba(0, 212, 255, 0.1);
+        }
+
+        .percentage-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .percent-item {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 100, 200, 0.05);
+            border: 1px solid rgba(255, 100, 200, 0.2);
+            border-radius: 10px;
+            padding: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .percent-item:hover {
+            background: rgba(255, 100, 200, 0.1);
+            border-color: rgba(255, 100, 200, 0.4);
+        }
+
+        .percent-input {
+            width: 60px;
+            padding: 8px 10px !important;
+            margin: 0 !important;
+            background: rgba(20, 20, 40, 0.8) !important;
+            border: 1px solid rgba(255, 100, 200, 0.3) !important;
+            font-size: 14px !important;
+        }
+
+        .percent-label {
+            margin-left: 8px;
+            font-size: 12px;
+            color: rgba(255, 150, 200, 0.8);
+            font-weight: 600;
+            min-width: 50px;
+        }
+
+        .add-btn {
+            margin-top: 12px;
+            padding: 8px 14px;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            color: #00d4ff;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .add-btn:hover {
+            background: rgba(0, 212, 255, 0.2);
+            border-color: #00d4ff;
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+        }
+
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.3), transparent);
+            margin: 30px 0;
+        }
+
+        .results-section {
+            animation: fadeInUp 0.6s ease-out 0.4s backwards;
+        }
+
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: rgba(100, 200, 255, 0.05);
+            border-left: 3px solid #00d4ff;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .result-item:hover {
+            background: rgba(100, 200, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+        .result-label {
+            font-size: 13px;
+            color: rgba(150, 200, 255, 0.8);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .result-value {
+            font-size: 20px;
+            font-weight: 700;
+            color: #00d4ff;
+            font-family: 'Courier New', monospace;
+        }
+
+        .total-box {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(255, 100, 200, 0.1));
+            border: 2px solid rgba(0, 212, 255, 0.4);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { 
+                box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+            }
+            50% { 
+                box-shadow: 0 0 30px rgba(0, 212, 255, 0.4);
+            }
+        }
+
+        .total-label {
+            font-size: 12px;
+            color: rgba(150, 200, 255, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .total-value {
+            font-size: 36px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #00d4ff, #ff006e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: 'Courier New', monospace;
+        }
+
+        .percentage-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            background: rgba(255, 100, 200, 0.05);
+            border-left: 3px solid #ff006e;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            font-size: 13px;
+        }
+
+        .percentage-row span:first-child {
+            color: rgba(150, 200, 255, 0.8);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .percentage-row span:last-child {
+            font-size: 16px;
+            font-weight: 700;
+            color: #ff006e;
+            font-family: 'Courier New', monospace;
+        }
+
+        .clear-btn {
+            width: 100%;
+            padding: 14px;
+            margin-top: 20px;
+            background: linear-gradient(135deg, rgba(255, 100, 200, 0.1), rgba(0, 212, 255, 0.05));
+            border: 2px solid rgba(100, 200, 255, 0.2);
+            color: #00d4ff;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.6s ease-out 0.5s backwards;
+        }
+
+        .clear-btn:hover {
+            background: linear-gradient(135deg, rgba(255, 100, 200, 0.2), rgba(0, 212, 255, 0.1));
+            border-color: #00d4ff;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .clear-btn:active {
+            transform: translateY(0);
+        }
+
+        .note {
+            font-size: 11px;
+            color: rgba(150, 200, 255, 0.5);
+            text-align: center;
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 25px;
+            }
+
+            .title {
+                font-size: 24px;
+            }
+
+            .total-value {
+                font-size: 28px;
+            }
+
+            .percentage-inputs {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">💰 Smart Calculator</h1>
+            <p class="subtitle">Amount + Percentage = Total</p>
+        </div>
+
+        <!-- Amount Input -->
+        <div class="input-group">
+            <label for="amount">Base Amount</label>
+            <div class="input-wrapper">
+                <input 
+                    type="number" 
+                    id="amount" 
+                    placeholder="Enter amount (e.g., 1000)"
+                    onchange="calculate()"
+                    oninput="calculate()"
+                    min="0"
+                    step="0.01"
+                >
+            </div>
+        </div>
+
+        <!-- Percentage Inputs -->
+        <div class="input-group">
+            <label>Add Percentage</label>
+            <div class="percentage-inputs" style="grid-template-columns: 1fr;">
+                <div class="percent-item">
+                    <input 
+                        type="number" 
+                        class="percent-input" 
+                        id="percent1"
+                        placeholder="0"
+                        onchange="calculate()"
+                        oninput="calculate()"
+                        min="0"
+                        step="0.01"
+                    >
+                    <span class="percent-label">%</span>
+                </div>
+            </div>
+            <button class="add-btn" onclick="addMorePercentage()">+ Add More %</button>
+            <div id="extraPercentages"></div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Results Section -->
+        <div class="results-section">
+            <div id="percentageBreakdown"></div>
+
+            <div class="total-box">
+                <div class="total-label">Final Total Amount</div>
+                <div class="total-value" id="totalValue">0.00</div>
+            </div>
+
+            <div style="margin-top: 20px;">
+                <div class="result-item">
+                    <span class="result-label">Base Amount</span>
+                    <span class="result-value" id="baseDisplay">0.00</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">Total Additions</span>
+                    <span class="result-value" id="additionDisplay">0.00</span>
+                </div>
+            </div>
+
+            <button class="clear-btn" onclick="clearAll()">Clear All</button>
+        </div>
+
+        <p class="note">All calculations are instant and automatic</p>
+    </div>
+
+    <script>
+        let percentageCount = 1;
+
+        function addMorePercentage() {
+            percentageCount++;
+            const container = document.getElementById('extraPercentages');
+            const newPercent = document.createElement('div');
+            newPercent.className = 'percentage-inputs';
+            newPercent.style.marginTop = '15px';
+            newPercent.style.gridTemplateColumns = '1fr';
+            newPercent.innerHTML = `
+                <div class="percent-item">
+                    <input 
+                        type="number" 
+                        class="percent-input" 
+                        id="percent${percentageCount}"
+                        placeholder="0"
+                        onchange="calculate()"
+                        oninput="calculate()"
+                        min="0"
+                        step="0.01"
+                    >
+                    <span class="percent-label">% - ${percentageCount}</span>
+                </div>
+            `;
+            container.appendChild(newPercent);
+            document.getElementById(`percent${percentageCount}`).focus();
+        }
+
+        function calculate() {
+            const amountInput = parseFloat(document.getElementById('amount').value) || 0;
+            
+            // Get all percentage inputs
+            let totalPercentage = 0;
+            const percentages = [];
+            
+            for (let i = 1; i <= percentageCount; i++) {
+                const percent = parseFloat(document.getElementById(`percent${i}`).value) || 0;
+                if (percent > 0) {
+                    totalPercentage += percent;
+                    percentages.push({
+                        id: i,
+                        value: percent
+                    });
+                }
+            }
+
+            // Calculate additions
+            const totalAddition = (amountInput * totalPercentage) / 100;
+            const finalTotal = amountInput + totalAddition;
+
+            // Update displays
+            document.getElementById('baseDisplay').textContent = formatNumber(amountInput);
+            document.getElementById('additionDisplay').textContent = formatNumber(totalAddition);
+            document.getElementById('totalValue').textContent = formatNumber(finalTotal);
+
+            // Update percentage breakdown
+            updatePercentageBreakdown(amountInput, percentages);
+        }
+
+        function updatePercentageBreakdown(baseAmount, percentages) {
+            const container = document.getElementById('percentageBreakdown');
+            
+            if (percentages.length === 0) {
+                container.innerHTML = '';
+                return;
+            }
+
+            let html = '';
+            percentages.forEach(pct => {
+                const addition = (baseAmount * pct.value) / 100;
+                html += `
+                    <div class="percentage-row">
+                        <span>${pct.value}% of ${baseAmount.toFixed(2)}</span>
+                        <span>${formatNumber(addition)}</span>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
+        function formatNumber(value) {
+            return parseFloat(value).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        function clearAll() {
+            document.getElementById('amount').value = '';
+            
+            for (let i = 1; i <= percentageCount; i++) {
+                const element = document.getElementById(`percent${i}`);
+                if (element) {
+                    element.value = '';
+                }
+            }
+
+            // Remove extra percentages
+            if (percentageCount > 1) {
+                document.getElementById('extraPercentages').innerHTML = '';
+                percentageCount = 1;
+            }
+
+            // Reset displays
+            document.getElementById('baseDisplay').textContent = '0.00';
+            document.getElementById('additionDisplay').textContent = '0.00';
+            document.getElementById('totalValue').textContent = '0.00';
+            document.getElementById('percentageBreakdown').innerHTML = '';
+
+            document.getElementById('amount').focus();
+        }
+
+        // Initial calculation
+        calculate();
+    </script>
+</body>
+</html>

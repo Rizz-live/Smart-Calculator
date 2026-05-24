@@ -55,20 +55,11 @@
         }
 
         @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .header {
-            text-align: center;
-            margin-bottom: 35px;
-        }
+        .header { text-align: center; margin-bottom: 35px; }
 
         .title {
             font-size: 28px;
@@ -108,147 +99,72 @@
         .card:nth-child(3) { animation-delay: 0.3s; }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .card-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 16px;
-        }
+        .card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
 
         .card-icon {
-            width: 45px;
-            height: 45px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: 45px; height: 45px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
             font-size: 24px;
             background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(255, 100, 200, 0.1));
             border: 1px solid rgba(0, 212, 255, 0.3);
         }
 
-        .card-title {
-            font-size: 16px;
-            font-weight: 700;
-            color: #fff;
-            line-height: 1.3;
-        }
-
-        .card-description {
-            font-size: 12px;
-            color: rgba(150, 200, 255, 0.6);
-            margin-top: 2px;
-        }
-
-        .input-group {
-            margin-bottom: 0;
-        }
+        .card-title { font-size: 16px; font-weight: 700; color: #fff; line-height: 1.3; }
+        .card-description { font-size: 12px; color: rgba(150, 200, 255, 0.6); margin-top: 2px; }
+        .input-group { margin-bottom: 0; }
 
         .input-label {
-            display: block;
-            font-size: 12px;
-            font-weight: 700;
-            color: #00d4ff;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            display: block; font-size: 12px; font-weight: 700;
+            color: #00d4ff; margin-bottom: 8px;
+            text-transform: uppercase; letter-spacing: 1px;
         }
 
         input {
-            width: 100%;
-            padding: 14px 15px;
+            width: 100%; padding: 14px 15px;
             background: rgba(30, 30, 60, 0.8);
             border: 2px solid rgba(100, 200, 255, 0.2);
-            border-radius: 12px;
-            color: #fff;
-            font-size: 16px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            outline: none;
+            border-radius: 12px; color: #fff;
+            font-size: 16px; font-weight: 600;
+            transition: all 0.3s ease; outline: none;
         }
 
-        input::placeholder {
-            color: rgba(150, 200, 255, 0.3);
-        }
+        input::placeholder { color: rgba(150, 200, 255, 0.3); }
 
         input:focus {
             background: rgba(100, 200, 255, 0.1);
             border-color: #00d4ff;
-            box-shadow: 
-                0 0 15px rgba(0, 212, 255, 0.3),
-                inset 0 0 10px rgba(0, 212, 255, 0.1);
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.3), inset 0 0 10px rgba(0, 212, 255, 0.1);
         }
 
         .info-box {
             background: rgba(255, 100, 200, 0.1);
             border: 1px solid rgba(255, 100, 200, 0.3);
-            border-radius: 10px;
-            padding: 14px;
-            margin-top: 16px;
-            text-align: center;
-            font-size: 13px;
-            color: rgba(150, 200, 255, 0.8);
+            border-radius: 10px; padding: 14px;
+            margin-top: 16px; text-align: center;
+            font-size: 13px; color: rgba(150, 200, 255, 0.8);
         }
 
-        .info-box strong {
-            color: #ff006e;
-            font-weight: 700;
-        }
+        .info-box strong { color: #ff006e; font-weight: 700; }
 
-        .button-group {
-            display: flex;
-            gap: 12px;
-            margin-top: 18px;
-        }
+        .button-group { display: flex; gap: 12px; margin-top: 18px; }
 
         .btn {
-            flex: 1;
-            padding: 14px 16px;
+            flex: 1; padding: 14px 16px;
             border: 2px solid rgba(100, 200, 255, 0.3);
-            border-radius: 12px;
-            font-size: 13px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            min-height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            border-radius: 12px; font-size: 13px; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1px;
+            cursor: pointer; transition: all 0.3s ease;
+            min-height: 50px; display: flex; align-items: center; justify-content: center;
         }
 
-        .btn-yes {
-            background: rgba(0, 255, 157, 0.1);
-            color: #00ff9d;
-            border-color: rgba(0, 255, 157, 0.3);
-        }
-
-        .btn-yes:hover:not(.active) {
-            background: rgba(0, 255, 157, 0.15);
-            border-color: rgba(0, 255, 157, 0.5);
-        }
-
-        .btn-no {
-            background: rgba(255, 100, 200, 0.1);
-            color: #ff006e;
-            border-color: rgba(255, 100, 200, 0.3);
-        }
-
-        .btn-no:hover:not(.active) {
-            background: rgba(255, 100, 200, 0.15);
-            border-color: rgba(255, 100, 200, 0.5);
-        }
+        .btn-yes { background: rgba(0, 255, 157, 0.1); color: #00ff9d; border-color: rgba(0, 255, 157, 0.3); }
+        .btn-yes:hover:not(.active) { background: rgba(0, 255, 157, 0.15); border-color: rgba(0, 255, 157, 0.5); }
+        .btn-no { background: rgba(255, 100, 200, 0.1); color: #ff006e; border-color: rgba(255, 100, 200, 0.3); }
+        .btn-no:hover:not(.active) { background: rgba(255, 100, 200, 0.15); border-color: rgba(255, 100, 200, 0.5); }
 
         .btn.active {
             background: linear-gradient(135deg, rgba(0, 212, 255, 0.3), rgba(100, 200, 255, 0.2));
@@ -263,16 +179,12 @@
             margin: 28px 0;
         }
 
-        .results-container {
-            animation: fadeInUp 0.6s ease-out 0.4s backwards;
-        }
+        .results-container { animation: fadeInUp 0.6s ease-out 0.4s backwards; }
 
         .result-box {
             background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(255, 100, 200, 0.1));
             border: 2px solid rgba(0, 212, 255, 0.3);
-            border-radius: 14px;
-            padding: 20px;
-            margin-bottom: 16px;
+            border-radius: 14px; padding: 20px; margin-bottom: 16px;
             text-align: center;
             box-shadow: 0 0 20px rgba(0, 212, 255, 0.15);
             animation: glow 2s ease-in-out infinite;
@@ -283,55 +195,32 @@
             50% { box-shadow: 0 0 30px rgba(0, 212, 255, 0.3); }
         }
 
-        .result-label {
-            font-size: 12px;
-            color: rgba(150, 200, 255, 0.7);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
+        .result-label { font-size: 12px; color: rgba(150, 200, 255, 0.7); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; font-weight: 600; }
 
         .result-value {
-            font-size: 28px;
-            font-weight: 800;
+            font-size: 28px; font-weight: 800;
             background: linear-gradient(135deg, #00d4ff, #ff006e);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-family: 'Courier New', monospace;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; font-family: 'Courier New', monospace;
         }
 
         .breakdown {
             background: rgba(100, 200, 255, 0.05);
             border-left: 3px solid #00d4ff;
-            border-radius: 8px;
-            padding: 14px;
-            margin: 16px 0;
-            font-size: 13px;
-            color: rgba(150, 200, 255, 0.8);
-            line-height: 1.8;
+            border-radius: 8px; padding: 14px; margin: 16px 0;
+            font-size: 13px; color: rgba(150, 200, 255, 0.8); line-height: 1.8;
         }
 
-        .breakdown strong {
-            color: #fff;
-            font-weight: 700;
-        }
+        .breakdown strong { color: #fff; font-weight: 700; }
 
         .clear-btn {
-            width: 100%;
-            padding: 14px;
-            margin-top: 20px;
+            width: 100%; padding: 14px; margin-top: 20px;
             background: linear-gradient(135deg, rgba(255, 100, 200, 0.1), rgba(0, 212, 255, 0.05));
             border: 2px solid rgba(100, 200, 255, 0.2);
-            color: #00d4ff;
-            border-radius: 12px;
-            font-size: 13px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            color: #00d4ff; border-radius: 12px;
+            font-size: 13px; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1.5px;
+            cursor: pointer; transition: all 0.3s ease;
             animation: fadeInUp 0.6s ease-out 0.5s backwards;
         }
 
@@ -342,34 +231,14 @@
             transform: translateY(-2px);
         }
 
-        .note {
-            font-size: 11px;
-            color: rgba(150, 200, 255, 0.5);
-            text-align: center;
-            margin-top: 20px;
-            font-style: italic;
-        }
+        .note { font-size: 11px; color: rgba(150, 200, 255, 0.5); text-align: center; margin-top: 20px; font-style: italic; }
 
         @media (max-width: 600px) {
-            .container {
-                padding: 25px;
-            }
-
-            .title {
-                font-size: 24px;
-            }
-
-            .result-value {
-                font-size: 22px;
-            }
-
-            .button-group {
-                flex-direction: column;
-            }
-
-            .btn {
-                padding: 12px;
-            }
+            .container { padding: 25px; }
+            .title { font-size: 24px; }
+            .result-value { font-size: 22px; }
+            .button-group { flex-direction: column; }
+            .btn { padding: 12px; }
         }
     </style>
 </head>
@@ -380,7 +249,6 @@
             <p class="subtitle">Weekly Earnings Calculator</p>
         </div>
 
-        <!-- Card 1: Coin Rate per USD -->
         <div class="card">
             <div class="card-header">
                 <div class="card-icon">💰</div>
@@ -391,22 +259,52 @@
             </div>
             <div class="input-group">
                 <span class="input-label">Coins Per USD</span>
-                <input 
-                    type="text" 
-                    value="8,000 Coins = 1 USD"
-                    disabled
-                    style="background: rgba(0, 212, 255, 0.1); color: #00d4ff; font-weight: 700;"
-                >
+                <input type="text" value="8,000 Coins = 1 USD" disabled style="background: rgba(0, 212, 255, 0.1); color: #00d4ff; font-weight: 700;">
             </div>
             <div class="info-box">
                 Current Rate: <strong>8,000 Coins = $1.00 USD</strong>
             </div>
         </div>
 
-        <!-- Card 2: Weekly Ruby Earnings -->
         <div class="card">
             <div class="card-header">
-                <div class="card-icon">💎</div>
+                <div class="card-icon">
+                    <svg width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="gTop" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#ff9999"/>
+                                <stop offset="100%" stop-color="#cc0000"/>
+                            </linearGradient>
+                            <linearGradient id="gLeft" x1="100%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="#aa0000"/>
+                                <stop offset="100%" stop-color="#660000"/>
+                            </linearGradient>
+                            <linearGradient id="gRight" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#ff4444"/>
+                                <stop offset="100%" stop-color="#990000"/>
+                            </linearGradient>
+                            <linearGradient id="gCenter" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#ff2222"/>
+                                <stop offset="100%" stop-color="#880000"/>
+                            </linearGradient>
+                        </defs>
+                        <!-- Top facets (crown) -->
+                        <polygon points="14,2 8,9 14,9" fill="url(#gTop)" stroke="#ff6666" stroke-width="0.3"/>
+                        <polygon points="14,2 20,9 14,9" fill="#dd1111" stroke="#ff6666" stroke-width="0.3"/>
+                        <polygon points="14,2 8,9 3,7" fill="#bb0000" stroke="#ff6666" stroke-width="0.3"/>
+                        <polygon points="14,2 20,9 25,7" fill="#ff3333" stroke="#ff6666" stroke-width="0.3"/>
+                        <polygon points="3,7 8,9 3,12" fill="#990000" stroke="#cc4444" stroke-width="0.3"/>
+                        <polygon points="25,7 20,9 25,12" fill="#ee2222" stroke="#cc4444" stroke-width="0.3"/>
+                        <!-- Girdle -->
+                        <polygon points="3,12 8,9 14,9 20,9 25,12 14,10" fill="#cc0000" stroke="#ff4444" stroke-width="0.3"/>
+                        <!-- Pavilion facets (bottom) -->
+                        <polygon points="3,12 14,10 14,26" fill="url(#gLeft)" stroke="#cc3333" stroke-width="0.3"/>
+                        <polygon points="25,12 14,10 14,26" fill="url(#gRight)" stroke="#cc3333" stroke-width="0.3"/>
+                        <!-- Shine highlight -->
+                        <polygon points="9,4 13,8 10,8" fill="white" opacity="0.25"/>
+                        <polygon points="10,3 12,6 10,6" fill="white" opacity="0.15"/>
+                    </svg>
+                </div>
                 <div>
                     <div class="card-title">Total Rubies Received</div>
                     <div class="card-description">Enter your total gift rubies this week</div>
@@ -414,19 +312,10 @@
             </div>
             <div class="input-group">
                 <span class="input-label">Weekly Ruby Earnings</span>
-                <input 
-                    type="number" 
-                    id="weeklyRuby"
-                    placeholder="e.g. 250000"
-                    onchange="calculate()"
-                    oninput="calculate()"
-                    min="0"
-                    step="1"
-                >
+                <input type="number" id="weeklyRuby" placeholder="e.g. 250000" onchange="calculate()" oninput="calculate()" min="0" step="1">
             </div>
         </div>
 
-        <!-- Card 3: Weekly Bonus Eligibility -->
         <div class="card">
             <div class="card-header">
                 <div class="card-icon">📊</div>
@@ -436,14 +325,13 @@
                 </div>
             </div>
             <div class="button-group">
-                <button class="btn btn-yes active" id="btnYes" onclick="selectBonus(true)">✓ Yes</button>
+                <button class="btn btn-yes" id="btnYes" onclick="selectBonus(true)">✓ Yes</button>
                 <button class="btn btn-no" id="btnNo" onclick="selectBonus(false)">✗ No</button>
             </div>
         </div>
 
         <div class="divider"></div>
 
-        <!-- Results Section -->
         <div class="results-container">
             <div class="result-box">
                 <div class="result-label">💵 Ruby to USD Conversion</div>
@@ -469,10 +357,14 @@
                 </div>
             </div>
 
+            <div class="info-box" style="margin-bottom: 16px;">
+                Current Rate: <strong>20,000 Rubies = $1.00 USD</strong>
+            </div>
+
             <div class="breakdown" id="breakdownBox" style="display: none;">
                 <strong>Breakdown:</strong><br>
                 Weekly Rubies: <strong id="breakdownRuby">0</strong><br>
-                ÷ 8,000 = <strong id="breakdownUSD">0.00</strong> USD<br><br>
+                ÷ 20,000 = <strong id="breakdownUSD">0.00</strong> USD<br><br>
                 Bonus Eligible: <strong id="breakdownBonus">Yes</strong><br>
                 30% of <strong id="breakdownBonusAmt">0</strong> Rubies = <strong id="breakdownBonusRuby">0</strong> Rubies<br>
                 = <strong id="breakdownBonusValue">0.00</strong> USD<br><br>
@@ -486,54 +378,39 @@
     </div>
 
     <script>
-        let bonusEligible = true;
+        let bonusEligible = null;
 
         function selectBonus(isYes) {
             bonusEligible = isYes;
-            
-            document.getElementById('btnYes').classList.toggle('active', isYes);
-            document.getElementById('btnNo').classList.toggle('active', !isYes);
-            
+            document.getElementById('btnYes').classList.toggle('active', isYes === true);
+            document.getElementById('btnNo').classList.toggle('active', isYes === false);
             calculate();
         }
 
         function calculate() {
             const weeklyRuby = parseFloat(document.getElementById('weeklyRuby').value) || 0;
-            const COIN_RATE = 8000; // Fixed rate
-            
-            // Convert Ruby to USD
+            const COIN_RATE = 20000; // Updated rate: 20,000 Rubies = $1 USD
+
             const usdValue = weeklyRuby / COIN_RATE;
-            
-            // Calculate 30% bonus in Rubies
-            const bonusRuby = bonusEligible ? (weeklyRuby * 30) / 100 : 0;
+            const bonusRuby = bonusEligible === true ? (weeklyRuby * 30) / 100 : 0;
             const bonusUSD = bonusRuby / COIN_RATE;
-            
-            // Total
             const totalRuby = weeklyRuby + bonusRuby;
             const total = usdValue + bonusUSD;
-            
-            // Update displays
+
             document.getElementById('weeklyRubyValue').textContent = formatNumber(weeklyRuby);
             document.getElementById('usdValue').textContent = '$' + formatNumber(usdValue);
             document.getElementById('bonusRubyValue').textContent = formatNumber(bonusRuby);
             document.getElementById('bonusValue').textContent = '$' + formatNumber(bonusUSD);
             document.getElementById('totalRubyValue').textContent = formatNumber(totalRuby);
             document.getElementById('totalValue').textContent = '$' + formatNumber(total);
-            
-            // Update breakdown
+
             updateBreakdown(weeklyRuby, usdValue, bonusRuby, bonusUSD, totalRuby, total);
         }
 
         function updateBreakdown(ruby, usd, bonusRuby, bonusUSD, totalRuby, total) {
             const box = document.getElementById('breakdownBox');
-            
-            if (ruby === 0) {
-                box.style.display = 'none';
-                return;
-            }
-            
+            if (ruby === 0) { box.style.display = 'none'; return; }
             box.style.display = 'block';
-            
             document.getElementById('breakdownRuby').textContent = formatNumber(ruby);
             document.getElementById('breakdownUSD').textContent = formatNumber(usd);
             document.getElementById('breakdownBonus').textContent = bonusEligible ? 'Yes' : 'No';
@@ -549,20 +426,16 @@
 
         function clearAll() {
             document.getElementById('weeklyRuby').value = '';
-            bonusEligible = true;
-            
-            document.getElementById('btnYes').classList.add('active');
+            bonusEligible = null;
+            document.getElementById('btnYes').classList.remove('active');
             document.getElementById('btnNo').classList.remove('active');
-            
             document.getElementById('usdValue').textContent = '0.00';
             document.getElementById('bonusValue').textContent = '0.00';
             document.getElementById('totalValue').textContent = '0.00';
             document.getElementById('breakdownBox').style.display = 'none';
-            
             document.getElementById('weeklyRuby').focus();
         }
 
-        // Initial calculation
         calculate();
     </script>
 </body>
